@@ -11,14 +11,16 @@ export default class RoverRN extends Component {
   constructor(props){
     super(props);
     this.state = {
-      rovers: []
+      rovers: [],
+      roverName: ''
     }
   }
 
   componentWillMount(){
     api.getRovers().then((response) => {
       this.setState({
-        rovers: response.rovers
+        rovers: response.rovers,
+        roverName: response.rovers[0].name
       })
     });
   }
@@ -32,6 +34,9 @@ export default class RoverRN extends Component {
         </Text>
         <Text style={styles.instructions}>
           Ok, get Roving!
+        </Text>
+        <Text style={styles.instructions}>
+          Rover: {this.state.roverName}
         </Text>
       </View>
     );
