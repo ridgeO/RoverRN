@@ -5,4 +5,4 @@ var api = {
   }
 };
 
-exports default api;
+export default api;

@@ -5,9 +5,26 @@ import {
   Text,
   View
 } from 'react-native';
+import api from './utilities/api.js';
 
 export default class RoverRN extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      rovers: []
+    }
+  }
+
+  componentWillMount(){
+    api.getRovers().then((response) => {
+      this.setState({
+        rovers: response.rovers
+      })
+    });
+  }
+
   render() {
+    console.log(this.state.rovers)
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
